@@ -1,4 +1,7 @@
-# [[#^085e43| 1. Список вопросов]]
+# [1. Список вопросов](#7.Ответы)
+
+#### link
+sfsfsdsf
 
 ## 1. Сети:
 ### 1.1 модель OSI:
@@ -139,20 +142,46 @@
 ## 7.  Контейниризацию и ее суть. Как работает?
 ## 8. Что такое шардирование и как работает.
 ## 9. Что такое кубернейтес и как работает
-10. SQL: Что такое SQL, NoSQL, NewSQL и какая между ними разница.
-11. 
-###################################
-#  7. Список ответов:
+## 10. Безопаность
+- Настройка аудита для доступа к файлу и контроль логинов c помощью auditd
+```
+aulast 
+aulastlog
 
-^085e43
+cat /etc/audit/rules.d/audit.rules 
+## First rule - delete all
+-D
+
+## Increase the buffers to survive stress events.
+## Make this bigger for busy systems
+-b 8192
+
+## This determine how long to wait in burst of events
+--backlog_wait_time 60000
+
+## Set failure mode to syslog
+-f 1
+
+-a exit,always -S open -F loginuid=1000
+
+-w /etc/group -p wa
+-w /etc/passwd -p wa
+-w /etc/shadow -p wa
+-w /etc/sudoers -p wa
+
+-w /etc/audit/ -p r
+-w /etc/audit/rules.d/audit.rules -p -wa
+-w /etc/dnf -p r
+-w /etc/dnf/dnf.conf -p wa
+```
+
+## 11.  SQL: Что такое SQL, NoSQL, NewSQL и какая между ними разница.
+## 12. 
+###################################
+# 7.  Ответы
+
 
 ## 1. Сети
 ### 1.1 модель OSI
 - Уровни модели OSI:
  какие протоколы на уровнях
-
-
-
-В inode содержится нужная нам информация: список блоков файловой системы для искомого файла
-
-Как найти номер inode для указанного файла?
